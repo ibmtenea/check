@@ -1,0 +1,70 @@
+<!-- Vertical navbar -->
+<div class="vertical-nav bg-white" id="sidebar">
+  <div class="py-4 px-3 mb-4 bg-light">
+    <div class="media d-flex align-items-center">
+      <img
+        src="https://www.travelcontinuously.com/wp-content/uploads/2018/04/empty-avatar.png"
+        alt="..."
+        width="65"
+        class="mr-3 rounded-circle img-thumbnail shadow-sm"
+      />
+      <div class="media-body">
+        <h5 class="minnom m-0">José maría TorreAguirre González</h5>
+        <p class="font-weight-light roledef mb-0"><em>Rol Mainframe</em></p>
+        
+        <a [routerLink]="['/', 'perfil']" class="text-light">
+          <i class="fa fa-user mr-1  fa-1g"></i> <small>Perfil</small>
+        </a>
+      </div>
+    </div>
+  </div>
+
+<app-buscador></app-buscador>
+
+<hr />
+
+  <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0">
+    NAVEGACIÓN
+  </p>
+
+  <ul class="nav flex-column bg-white mb-0">
+    <li class="nav-item" routerLinkActive="active">
+      <a [routerLink]="['/', 'home']" class="nav-link  ">
+        <i class="fa fa-home mr-3  fa-fw"></i>
+        Home
+      </a>
+    </li>
+    <li class="nav-item" routerLinkActive="active">
+      <a [routerLink]="['/', 'personas']" class="nav-link ">
+        <i class="fa fa-users mr-3  fa-fw"></i>
+        Personas
+      </a>
+    </li>
+    <li class="nav-item" routerLinkActive="active">
+      <a [routerLink]="['/', 'historico']" class="nav-link ">
+        <i class="fa fa-history mr-3  fa-fw"></i>
+        Consulta histórica
+      </a>
+    </li>
+    <li class="nav-item" routerLinkActive="active">
+      <a [routerLink]="['/', 'descarga']" class="nav-link ">
+        <i class="fa fa-download mr-3  fa-fw"></i>
+        Descarga Información
+      </a>
+    </li>
+  </ul>
+  <hr />
+  <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0">
+    ROL ADMINISTRADOR
+  </p>
+
+  <ul class="nav flex-column bg-white mb-0">
+    <li class="nav-item" routerLinkActive="active">
+      <a [routerLink]="['/', 'configuracion']" class="nav-link ">
+        <i class="fa fa-cog mr-3  fa-fw"></i>
+        Configuración
+      </a>
+    </li>
+  </ul>
+</div>
+<!-- End vertical navbar -->

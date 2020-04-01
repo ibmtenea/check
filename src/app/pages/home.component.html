@@ -1,0 +1,152 @@
+<div class="page-content" id="content">
+  <app-header></app-header>
+  <app-menu></app-menu>
+
+  <div class="row m-2">
+    <div class="col-md-12 mt-4">
+      <h3>{{ "txtPersonas" | translate }}</h3>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a [routerLink]="['/', 'home']">Home</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">
+            {{ "txtPersonas" | translate }}
+          </li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+  <div class="row m-2 mt-4">
+    <div class="col-md-12 alturaminima">
+
+      <div class=" mat-elevation-z8 p-3 mb-5">
+        <div class="row">
+          <div class="col-6">
+            <div class="form">
+              <mat-form-field floatPlaceholder="never" color="accent">
+                <input matInput #filter placeholder="Filtrar registros" />
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="col-6 text-right pr-5">
+             
+          </div>
+        </div>
+
+        <mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
+          ng update @angular/cli @angular/core
+          <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+          <!-- ID Column -->
+          <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef mat-sort-header
+              >Id</mat-header-cell
+            >
+            <mat-cell *matCellDef="let row">{{ row.id }}</mat-cell>
+          </ng-container> 
+        
+
+          <ng-container matColumnDef="title">
+            <mat-header-cell *matHeaderCellDef mat-sort-header
+              >Tarea</mat-header-cell
+            >
+            <mat-cell *matCellDef="let row"> {{ row.title }}</mat-cell>
+          </ng-container>
+
+
+          <ng-container matColumnDef="hora">
+            <mat-header-cell *matHeaderCellDef mat-sort-header
+              >Hora</mat-header-cell
+            >
+            <mat-cell *matCellDef="let row">  {{ row.hora }}</mat-cell>
+          </ng-container>
+          
+          <ng-container matColumnDef="state">
+            <mat-header-cell *matHeaderCellDef mat-sort-header  
+              >Estado</mat-header-cell
+            >
+            <mat-cell *matCellDef="let row" 
+            [ngClass]="{
+            'positive' : row.state == 'OK',
+            'negative' : row.state == 'KO',
+            'posnegtive': row.state == 'OK-INC'
+         }">  
+         {{ row.state }}
+            </mat-cell>
+          </ng-container>
+
+
+
+          
+
+
+
+        <!-- <ng-container matColumnDef="created_at">
+            <mat-header-cell *matHeaderCellDef mat-sort-header
+              >Created at</mat-header-cell
+            >
+            <mat-cell *matCellDef="let row"> </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="updated_at">
+            <mat-header-cell *matHeaderCellDef mat-sort-header
+              >Updated at</mat-header-cell
+            >
+            <mat-cell *matCellDef="let row"> </mat-cell>
+          </ng-container>
+--> 
+          <!-- actions -->
+          <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef>
+              <button mat-icon-button color="primary" (click)="addNew()">
+                <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+              </button>
+            </mat-header-cell>
+            
+            <mat-cell *matCellDef="let row; let i = index">
+              <button
+                mat-icon-button
+                color="accent"
+                (click)="startEdit(i, row.id, row.title)"
+              >
+                <mat-icon aria-label="Edit">edit_circle</mat-icon>
+              </button>
+
+              <button
+                mat-icon-button
+                color="warn"
+                (click)="deleteItem(i, row.id, row.title)"
+              >
+                <mat-icon aria-label="Delete">cancel</mat-icon>
+              </button>
+            </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+        </mat-table>
+
+        <div
+          class="no-results"
+          [style.display]="dataSource.renderedData.length == 0 ? '' : 'none'"
+        >
+          {{ "txtNoHayResultados" | translate }}
+        </div>
+
+        <mat-paginator
+          #paginator
+          [length]="dataSource.filteredData.length"
+          [pageIndex]="0"
+          [pageSize]="10"
+          [pageSizeOptions]="[5, 10, 25, 100]"
+        >
+        </mat-paginator>
+      </div>
+    </div>
+  </div>
+
+  <app-footer></app-footer>
+</div>
